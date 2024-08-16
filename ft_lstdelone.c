@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 14:53:36 by peferrei          #+#    #+#             */
-/*   Updated: 2024/08/03 16:03:45 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:48:13 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
-	del(lst->value);
+	del(lst->content);
 	free(lst);
 }
 

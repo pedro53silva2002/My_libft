@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:31:24 by peferrei          #+#    #+#             */
-/*   Updated: 2024/08/06 17:19:33 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:02:10 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*ft_getnextline_strjoin(const char *s1, const char *s2)
 	size_t	j;
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_gnllen(s1) + ft_gnllen(s2) + 1));
 	if (!str)
 		return (0);
 	i = 0;

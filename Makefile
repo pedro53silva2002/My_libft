@@ -14,7 +14,7 @@ SRCS            =   ft_isalnum.c ft_isprint.c ft_memcmp.c \
 			ft_printf_putnbr_base.c ft_printf_putnbr_fd.c ft_printf_putptr.c \
 			ft_printf_putstr_fd.c ft_printf_strlcpy.c ft_printf_strlen.c \
 			ft_printf_strncmp.c ft_printf.c \
-			get_next_line_utils.c get_next_line.c
+			get_next_line_utils.c get_next_line_utils_2.c get_next_line.c
 
 OBJS            = $(SRCS:.c=.o)
 
