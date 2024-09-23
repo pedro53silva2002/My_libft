@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 10:55:08 by peferrei          #+#    #+#             */
-/*   Updated: 2024/08/16 15:01:57 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:27:16 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*set_stash(char *stash)
 		i++;
 	while (stash[j] != '\0')
 		j++;
-	new_stash = ft_getnextline_substr(stash, i + 1, j - i);
+	new_stash = ft_gnlsubstr(stash, i + 1, j - i);
 	if (!new_stash)
 		return (free(new_stash), NULL);
 	free(stash);
@@ -41,7 +41,7 @@ static char	*fill_line_buffer(int fd, char *stash, char *buffer)
 	int	read_size;
 
 	read_size = BUFFER_SIZE;
-	while (read_size != 0 && (!ft_getnextline_strchr(buffer, '\n')))
+	while (read_size != 0 && (!ft_gnlstrchr(buffer, '\n')))
 	{
 		read_size = read(fd, buffer, BUFFER_SIZE);
 		if (read_size < 0)
@@ -49,7 +49,7 @@ static char	*fill_line_buffer(int fd, char *stash, char *buffer)
 		if (read_size == 0)
 			break ;
 		buffer[read_size] = '\0';
-		stash = ft_getnextline_strjoin(stash, buffer);
+		stash = ft_gnlstrjoin(stash, buffer);
 		if (!stash)
 			return (NULL);
 	}
@@ -96,7 +96,7 @@ char	*get_next_line(int fd)
 		stash[fd] = to_be_or_not_to_be_free(stash[fd]);
 		return (NULL);
 	}
-	result = ft_getnextline_strdupn(stash[fd]);
+	result = ft_strdupn(stash[fd]);
 	if (result == NULL || result[0] == '\0')
 		return (free(stash[fd]), free(result), NULL);
 	stash[fd] = set_stash(stash[fd]);

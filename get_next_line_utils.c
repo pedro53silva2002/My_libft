@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:31:24 by peferrei          #+#    #+#             */
-/*   Updated: 2024/08/16 15:02:10 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:28:48 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  *  @param str - string
  *  @return returns the length of the string
 */
-size_t	ft_getnextline_strlen(const char *str)
+size_t	ft_gnllen(const char *str)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ size_t	ft_getnextline_strlen(const char *str)
  *  @param c - character
  *  @return Returns the part of the string that starts with that character
 */
-char	*ft_getnextline_strchr(const char *s, int c)
+char	*ft_gnlstrchr(const char *s, int c)
 {
 	char	cc;
 	int		i;
@@ -56,23 +56,50 @@ char	*ft_getnextline_strchr(const char *s, int c)
 	return (NULL);
 }
 
+char	*ft_strdupn(const char *s)
+{
+	size_t	i;
+	size_t	n;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	n = 0;
+	while (s[n] != '\n' && s[n] != '\0')
+		n++;
+	n += 1;
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (s[i] && i < n)
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
 /** @brief Extracts a substring from a string
  * 	@param s - string
  * 	@param start - index to start to substring
  * 	@param len - size of substring
  *  @return Returns the substring
 */
-char	*ft_getnextline_substr(char *s, unsigned int start, size_t len)
+char	*ft_gnlsubstr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*str;
 
 	if (!s)
 		return (0);
-	if (len > ft_getnextline_strlen(s) - start)
-		len = ft_getnextline_strlen(s) - start;
-	if (start > ft_getnextline_strlen(s))
-		return (ft_getnextline_strdupn(""));
+	if (len > ft_gnllen(s) - start)
+		len = ft_gnllen(s) - start;
+	if (start > ft_gnllen(s))
+		return (ft_strdupn(""));
 	str = (char *) malloc(sizeof(*s) * len + 1);
 	if (!str)
 		return (0);
@@ -92,7 +119,7 @@ char	*ft_getnextline_substr(char *s, unsigned int start, size_t len)
  * 	@param s2 - string two
  *  @return Returns the new string
 */
-char	*ft_getnextline_strjoin(const char *s1, const char *s2)
+char	*ft_gnlstrjoin(const char *s1, const char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -117,32 +144,5 @@ char	*ft_getnextline_strjoin(const char *s1, const char *s2)
 	str[i] = '\0';
 	if (s1)
 		free((char *)s1);
-	return (str);
-}
-
-char	*ft_getnextline_strdupn(const char *s)
-{
-	size_t	i;
-	size_t	n;
-	char	*str;
-
-	if (!s)
-		return (NULL);
-	n = 0;
-	while (s[n] != '\n' && s[n] != '\0')
-		n++;
-	n += 1;
-	str = (char *)malloc(sizeof(char) * (n + 1));
-	if (!str)
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (s[i] && i < n)
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:11:52 by peferrei          #+#    #+#             */
-/*   Updated: 2024/08/16 15:01:03 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:27:35 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }		t_list;
-
-/* typedef struct s_list
-{
-	int				value;
-	int				index;
-	struct s_list	*next;
-}		t_list; */
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -94,10 +87,10 @@ int		ft_printf(const char *s, ...);
 int		ft_printfnumlen(int n);
 size_t	ft_getnextline_strlen(const char *str);
 size_t	ft_gnllen(const char *str);
-char	*ft_getnextline_strchr(const char *s, int c);
-char	*ft_getnextline_substr(char *s, unsigned int start, size_t len);
-char	*ft_getnextline_strjoin(const char *s1, const char *s2);
-char	*ft_getnextline_strdupn(const char *s);
+char	*ft_gnlstrchr(const char *s, int c);
+char	*ft_gnlsubstr(char *s, unsigned int start, size_t len);
+char	*ft_gnlstrjoin(const char *s1, const char *s2);
+char	*ft_strdupn(const char *s);
 char	*get_next_line(int fd);
 
 #endif
